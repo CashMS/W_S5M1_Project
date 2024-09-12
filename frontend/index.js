@@ -134,7 +134,10 @@ function moduleProject1() {
   // 👉 TASK 6 - Make it so user can tab through the widgets
   //  ✨ add your code here
 
-  
+  quoteDay.setAttribute('tabindex', '1');
+  corpo.setAttribute('tabindex', '2');
+  count.setAttribute('tabindex', '3');
+  friend.setAttribute('tabindex', '4');
 
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
