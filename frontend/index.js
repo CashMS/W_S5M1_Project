@@ -16,6 +16,7 @@ function moduleProject1() {
 
   const quoteDay = document.querySelector('.quoteoftheday');
   quoteDay.classList.add('widget');
+
   function random() {
     const randomInd = Math.floor(Math.random() * quotes.length);
     return quotes[randomInd];
@@ -34,7 +35,6 @@ function moduleProject1() {
 
   quoteDay.appendChild(div1);
   quoteDay.appendChild(div2);
-  console.log(quotes);
 
   // 👉 TASK 3 - Build a "Corporate Speak" widget
   //  ✨ add your code here
@@ -83,7 +83,6 @@ function moduleProject1() {
   const interval = setInterval(() => {
     num--;
     if (num >= 1) {
-      console.log(num);
       liftoff.textContent = `T-minus ${num}...`;
     } else {
       clearInterval(interval);
@@ -94,15 +93,48 @@ function moduleProject1() {
   // 👉 TASK 5 - Build a "Friends" widget
   //  ✨ add your code here
 
-  console.log(people)
+  function getRandomFriend() {
+    const ranFriend = Math.floor(Math.random() * people.length);
+    return people[ranFriend];
+  }
+
+  const randomFriend = getRandomFriend();
+  const birth = randomFriend.dateOfBirth.slice(0, 4);
+  const arrayF = randomFriend.friends;
+
   const friend = document.querySelector('.friends');
   friend.classList.add('widget');
+
   const m9 = document.createElement('p');
-  m9.textContent = 'Dustin Barnholdt was born in 2002 and is friends with Cassius Schaeffer and Maya Blaisdell Wood.';
   friend.appendChild(m9);
+  m9.textContent = `${randomFriend.fname} ${randomFriend.lname} was born in ${birth}
+  and is friends with`
+
+  const names = [];
+  for (let i = 0; i < people.length; i++) {
+    const idArray = people[i].id;
+
+    for (let x = 0; x < arrayF.length; x++) {
+      if (idArray === arrayF[x]) {
+        names.push(people[i].fname + " " + people[i].lname);
+      }
+    }
+  }
+
+  if (names.length === 0) {
+    m9.textContent = `${randomFriend.fname} ${randomFriend.lname} was born in ${birth}
+  and has no friends.`;
+  } else if (names.length === 1) {
+    m9.textContent += ` ${names[0]}.`;
+} else {
+    const lastFriend = names.pop();
+    m9.textContent += ` ${names.join(', ')} and ${lastFriend}.`;
+}
 
   // 👉 TASK 6 - Make it so user can tab through the widgets
   //  ✨ add your code here
+
+  
 
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
