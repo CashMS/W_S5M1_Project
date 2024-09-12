@@ -21,14 +21,17 @@ function moduleProject1() {
     return quotes[randomInd];
   }
   const ranQuote = random();
+
   const div1 = document.createElement('div');
   div1.textContent = `${ranQuote.quote}`;
+
   const div2 = document.createElement('div');
   if (ranQuote.date !== null) {
     div2.textContent = `${ranQuote.author} ${ranQuote.date}`;
   } else {
-    div2.textContent = `${ranQuote.author} in an unkown date`;
+    div2.textContent = `${ranQuote.author} in an unknown date`;
   }
+
   quoteDay.appendChild(div1);
   quoteDay.appendChild(div2);
   console.log(quotes);
@@ -69,16 +72,19 @@ function moduleProject1() {
   // 👉 TASK 4 - Build a "Countdown" widget
   //  ✨ add your code here
 
+  let num = 5;
   const count = document.querySelector('.countdown');
   count.classList.add('widget');
+
   const liftoff = document.createElement('p');
+  liftoff.textContent = `T-minus ${num}...`;
   count.appendChild(liftoff);
-  let num = 5;
+
   const interval = setInterval(() => {
-    liftoff.textContent = `T-minus ${num}...`;
+    num--;
     if (num >= 1) {
       console.log(num);
-      num--;
+      liftoff.textContent = `T-minus ${num}...`;
     } else {
       clearInterval(interval);
       liftoff.textContent = 'Liftoff! 🚀';
@@ -88,10 +94,11 @@ function moduleProject1() {
   // 👉 TASK 5 - Build a "Friends" widget
   //  ✨ add your code here
 
+  console.log(people)
   const friend = document.querySelector('.friends');
   friend.classList.add('widget');
   const m9 = document.createElement('p');
-  m9.textContent = 'Dustin Barnholdt was born in 2002 and is friends with Cassius Schaeffer and Maya Blaisdell-Wood.';
+  m9.textContent = 'Dustin Barnholdt was born in 2002 and is friends with Cassius Schaeffer and Maya Blaisdell Wood.';
   friend.appendChild(m9);
 
   // 👉 TASK 6 - Make it so user can tab through the widgets
