@@ -94,7 +94,7 @@ You will know your code is working correctly because some CSS will kick in for t
 
 #### 👉 TASK 2 - Build a "Quote of the Day" widget
 
-<details>
+<details> 
   <summary>Click to read</summary>
 
   ---
