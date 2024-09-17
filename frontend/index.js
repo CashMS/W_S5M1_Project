@@ -28,7 +28,7 @@ function moduleProject1() {
 
   const div2 = document.createElement('div');
   if (ranQuote.date !== null) {
-    div2.textContent = `${ranQuote.author} ${ranQuote.date}`;
+    div2.textContent = `${ranQuote.author} in ${ranQuote.date}`;
   } else {
     div2.textContent = `${ranQuote.author} in an unknown date`;
   }
@@ -39,32 +39,23 @@ function moduleProject1() {
   // 👉 TASK 3 - Build a "Corporate Speak" widget
   //  ✨ add your code here
 
-  function getRandomElement(arr) {
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    return arr[randomIndex];
-  }
+  const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-  function getDifRandom(arr, exclude) {
-    let randomElement;
-    do {
-      randomElement = getRandomElement(arr);
-    } while (randomElement === exclude);
-    return randomElement;
-  }
+  const getDiffRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
   const randomAdverbs = getRandomElement(adverbs);
   const randomNouns = getRandomElement(nouns);
   const randomVerbs = getRandomElement(verbs);
 
-  const randomAdverbs2 = getDifRandom(adverbs, randomAdverbs);
-  const randomNouns2 = getDifRandom(nouns, randomNouns);
-  const randomVerbs2 = getDifRandom(verbs, randomVerbs);
+  const randomAdverbs2 = getDiffRandom(adverbs);
+  const randomNouns2 = getDiffRandom(nouns);
+  const randomVerbs2 = getDiffRandom(verbs);
 
   const corpo = document.querySelector('.corporatespeak');
   corpo.classList.add('widget');
 
   const speak = document.createElement('p');
-  speak.textContent = `We need to ${randomVerbs} our ${randomNouns} ${randomAdverbs} 
+  speak.textContent = `We need to ${randomVerbs} our ${randomNouns} ${randomAdverbs}
   in order to ${randomVerbs2} our ${randomNouns2} ${randomAdverbs2}.`;
 
   corpo.appendChild(speak);
@@ -108,7 +99,7 @@ function moduleProject1() {
   const m9 = document.createElement('p');
   friend.appendChild(m9);
   m9.textContent = `${randomFriend.fname} ${randomFriend.lname} was born in ${birth}
-  and is friends with`
+  and is friends with`;
 
   const names = [];
   for (let i = 0; i < people.length; i++) {
@@ -126,10 +117,17 @@ function moduleProject1() {
   and has no friends.`;
   } else if (names.length === 1) {
     m9.textContent += ` ${names[0]}.`;
-} else {
-    const lastFriend = names.pop();
-    m9.textContent += ` ${names.join(', ')} and ${lastFriend}.`;
+} else if (names.length === 2) {
+  m9.textContent += ` ${names[0]} and ${names[1]}.`
+} else if (names.length === 3) {
+  m9.textContent += ` ${names[1]}, ${names[2]} and ${names[0]}.`
+} else if (names.length === 4) {
+  m9.textContent += ` ${names[3]}, ${names[2]}, ${names[0]} and ${names[1]}.`
 }
+console.log(people);
+console.log(names);
+
+// William Brown was born in 1997 and is friends with Jessica Taylor, Maria Rodriguez and Kimberly Ng.
 
   // 👉 TASK 6 - Make it so user can tab through the widgets
   //  ✨ add your code here
